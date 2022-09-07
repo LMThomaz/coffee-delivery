@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const ContainerHeader = styled.header`
   max-width: 1120px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
   display: flex;
@@ -34,9 +35,9 @@ export const InfoLocation = styled(BaseButton)`
 export const CartShopping = styled(BaseButton)`
   background-color: ${({ theme }) => theme['yellow-200']};
   color: ${({ theme }) => theme['yellow-700']};
-  cursor: pointer;
   box-shadow: 0 0 0 0 ${({ theme }) => theme['yellow-700']};
-  transition: all 160ms ease-in-out;
+  cursor: pointer;
+  transition: all 80ms ease-in-out;
 
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme['yellow-700']};
