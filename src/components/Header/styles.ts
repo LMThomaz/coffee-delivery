@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ContainerHeader = styled.header`
-  max-width: 1120px;
+  max-width: 70rem;
   width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
@@ -30,6 +30,7 @@ export const BaseButton = styled.button`
 export const InfoLocation = styled(BaseButton)`
   background-color: ${({ theme }) => theme['purple-200']};
   color: ${({ theme }) => theme['purple-700']};
+  cursor: default;
 `
 
 export const CartShopping = styled(BaseButton)`
