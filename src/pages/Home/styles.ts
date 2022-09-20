@@ -89,3 +89,10 @@ export const CoffeeCardsWrapper = styled.div`
     font-size: 2rem;
   }
 `
+
+export const ListCoffees = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+`

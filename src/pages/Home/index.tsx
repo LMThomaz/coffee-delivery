@@ -1,5 +1,8 @@
 import { CardCoffee } from '@components'
+import { CoffeeDTO } from '@dtos'
+import { api } from '@services'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import {
   CoffeeCardsWrapper,
   ContainerHome,
@@ -8,9 +11,20 @@ import {
   InfoWrapper,
   IntroImage,
   IntroWrapper,
+  ListCoffees,
 } from './styles'
 
 export function Home() {
+  const [coffees, setCoffees] = useState<CoffeeDTO[]>([])
+
+  useEffect(() => {
+    async function getCoffees() {
+      const response = await api.get('/coffees')
+      setCoffees(response.data)
+    }
+    getCoffees()
+  }, [])
+
   return (
     <ContainerHome>
       <IntroWrapper>
@@ -53,9 +67,11 @@ export function Home() {
       </IntroWrapper>
       <CoffeeCardsWrapper>
         <h3>Nossos cafés</h3>
-        <div>
-          <CardCoffee />
-        </div>
+        <ListCoffees>
+          {coffees.map((coffee) => (
+            <CardCoffee key={coffee.id} />
+          ))}
+        </ListCoffees>
       </CoffeeCardsWrapper>
     </ContainerHome>
   )

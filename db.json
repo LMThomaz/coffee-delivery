@@ -5,227 +5,112 @@
       "title": "Expresso Tradicional",
       "description": "O tradicional café feito com água quente e grãos moídos",
       "amount": 990,
-      "image": "espresso.png"
+      "image": "espresso.png",
+      "tags": ["Tradicional"]
     },
     {
       "id": 2,
       "title": "Expresso Americano",
       "description": "Expresso diluído, menos intenso que o tradicional",
       "amount": 990,
-      "image": "american.png"
+      "image": "american.png",
+      "tags": ["Tradicional"]
     },
     {
       "id": 3,
       "title": "Expresso Cremoso",
       "description": "Café expresso tradicional com espuma cremosa",
       "amount": 990,
-      "image": "creamyEspresso.png"
+      "image": "creamyEspresso.png",
+      "tags": ["Tradicional"]
     },
     {
       "id": 4,
       "title": "Expresso Gelado",
       "description": "Bebida preparada com café expresso e cubos de gelo",
       "amount": 990,
-      "image": "icedCoffee.png"
+      "image": "icedCoffee.png",
+      "tags": ["Tradicional", "Gelado"]
     },
     {
       "id": 5,
       "title": "Café com Leite",
       "description": "Meio a meio de expresso tradicional com leite vaporizado",
       "amount": 990,
-      "image": "coffeeWithMilk.png"
+      "image": "coffeeWithMilk.png",
+      "tags": ["Tradicional", "Com leite"]
     },
     {
       "id": 6,
       "title": "Latte",
       "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
       "amount": 990,
-      "image": "latte.png"
+      "image": "latte.png",
+      "tags": ["Tradicional", "Com leite"]
     },
     {
       "id": 7,
       "title": "Cappuccino",
       "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
       "amount": 990,
-      "image": "cappuccino.png"
+      "image": "cappuccino.png",
+      "tags": ["Tradicional", "Com leite"]
     },
     {
       "id": 8,
       "title": "Macchiato",
       "description": "Café expresso misturado com um pouco de leite quente e espuma",
       "amount": 990,
-      "image": "macchiato.png"
+      "image": "macchiato.png",
+      "tags": ["Tradicional", "Com leite"]
     },
     {
       "id": 9,
       "title": "Mocaccino",
       "description": "Café expresso com calda de chocolate, pouco leite e espuma",
       "amount": 990,
-      "image": "mochaccino.png"
+      "image": "mochaccino.png",
+      "tags": ["Tradicional", "Com leite"]
     },
     {
       "id": 10,
       "title": "Chocolate Quente",
       "description": "Bebida feita com chocolate dissolvido no leite quente e café",
       "amount": 990,
-      "image": "hotChocolate.png"
+      "image": "hotChocolate.png",
+      "tags": ["Especial", "Com leite"]
     },
     {
       "id": 11,
       "title": "Cubano",
       "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
       "amount": 990,
-      "image": "cuban.png"
+      "image": "cuban.png",
+      "tags": ["Especial", "Alcoólico", "Gelado"]
     },
     {
       "id": 12,
       "title": "Havaiano",
       "description": "Bebida adocicada preparada com café e leite de coco",
       "amount": 990,
-      "image": "hawaiian.png"
+      "image": "hawaiian.png",
+      "tags": ["Especial"]
     },
     {
       "id": 13,
       "title": "Árabe",
       "description": "Bebida preparada com grãos de café árabe e especiarias",
       "amount": 990,
-      "image": "arabic.png"
+      "image": "arabic.png",
+      "tags": ["Especial"]
     },
     {
       "id": 14,
       "title": "Irlandês",
       "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       "amount": 990,
-      "image": "irish.png"
-    }
-  ],
-  "tags": [
-    { "id": 1, "name": "Tradicional" },
-    { "id": 2, "name": "Gelado" },
-    { "id": 3, "name": "Com leite" },
-    { "id": 4, "name": "Especial" },
-    { "id": 5, "name": "Alcoólico" }
-  ],
-  "coffee_tag": [
-    {
-      "id": 1,
-      "coffee_id": 1,
-      "tag_id": 1
-    },
-    {
-      "id": 2,
-      "coffee_id": 2,
-      "tag_id": 1
-    },
-    {
-      "id": 3,
-      "coffee_id": 3,
-      "tag_id": 1
-    },
-    {
-      "id": 4,
-      "coffee_id": 4,
-      "tag_id": 1
-    },
-    {
-      "id": 5,
-      "coffee_id": 4,
-      "tag_id": 2
-    },
-    {
-      "id": 6,
-      "coffee_id": 5,
-      "tag_id": 1
-    },
-    {
-      "id": 7,
-      "coffee_id": 5,
-      "tag_id": 3
-    },
-    {
-      "id": 8,
-      "coffee_id": 6,
-      "tag_id": 1
-    },
-    {
-      "id": 9,
-      "coffee_id": 6,
-      "tag_id": 3
-    },
-    {
-      "id": 10,
-      "coffee_id": 7,
-      "tag_id": 1
-    },
-    {
-      "id": 11,
-      "coffee_id": 7,
-      "tag_id": 3
-    },
-    {
-      "id": 12,
-      "coffee_id": 8,
-      "tag_id": 1
-    },
-    {
-      "id": 13,
-      "coffee_id": 8,
-      "tag_id": 3
-    },
-    {
-      "id": 14,
-      "coffee_id": 9,
-      "tag_id": 1
-    },
-    {
-      "id": 15,
-      "coffee_id": 9,
-      "tag_id": 3
-    },
-    {
-      "id": 16,
-      "coffee_id": 10,
-      "tag_id": 4
-    },
-    {
-      "id": 17,
-      "coffee_id": 10,
-      "tag_id": 3
-    },
-    {
-      "id": 18,
-      "coffee_id": 11,
-      "tag_id": 4
-    },
-    {
-      "id": 19,
-      "coffee_id": 11,
-      "tag_id": 5
-    },
-    {
-      "id": 20,
-      "coffee_id": 11,
-      "tag_id": 2
-    },
-    {
-      "id": 21,
-      "coffee_id": 12,
-      "tag_id": 4
-    },
-    {
-      "id": 22,
-      "coffee_id": 13,
-      "tag_id": 4
-    },
-    {
-      "id": 23,
-      "coffee_id": 14,
-      "tag_id": 4
-    },
-    {
-      "id": 24,
-      "coffee_id": 14,
-      "tag_id": 5
+      "image": "irish.png",
+      "tags": ["Especial", "Alcoólico"]
     }
   ]
 }

@@ -8,6 +8,8 @@ export default defineConfig({
       { find: '@components', replacement: '/src/components' },
       { find: '@assets', replacement: '/src/assets' },
       { find: '@pages', replacement: '/src/pages' },
+      { find: '@services', replacement: '/src/services' },
+      { find: '@dtos', replacement: '/src/dtos' },
     ],
   },
 })
