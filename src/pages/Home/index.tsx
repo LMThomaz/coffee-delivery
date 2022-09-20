@@ -1,6 +1,7 @@
 import { CardCoffee } from '@components'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import {
+  CoffeeCardsWrapper,
   ContainerHome,
   HighlightList,
   HighlightListItem,
@@ -50,12 +51,12 @@ export function Home() {
         </div>
         <IntroImage />
       </IntroWrapper>
-      <div>
-        <strong>Nossos cafés</strong>
+      <CoffeeCardsWrapper>
+        <h3>Nossos cafés</h3>
         <div>
           <CardCoffee />
         </div>
-      </div>
+      </CoffeeCardsWrapper>
     </ContainerHome>
   )
 }

@@ -4,8 +4,7 @@ import styled from 'styled-components'
 
 export const ContainerHome = styled.div`
   background: url(${backgroundIntroImg}) no-repeat;
-  background-size: 100% 100%;
-  height: 34rem;
+  background-size: 100% 34rem;
 `
 
 export const IntroWrapper = styled.div`
@@ -13,9 +12,11 @@ export const IntroWrapper = styled.div`
   justify-content: space-between;
   height: 100%;
   align-items: center;
-  max-width: 70rem;
+  max-width: 72rem;
   width: 100%;
   margin: 0 auto;
+  min-height: 34rem;
+  padding: 0 1rem;
 `
 
 export const IntroImage = styled.img.attrs({
@@ -30,7 +31,6 @@ export const InfoWrapper = styled.div`
     white-space: break-spaces;
     font-size: 3rem;
     font-weight: 800;
-    font-family: 'Baloo 2', cursive;
     color: ${({ theme }) => theme['gray-900']};
   }
   p {
@@ -73,5 +73,19 @@ export const HighlightListItem = styled.li<HighlightItemProps>`
       theme[HIGHLIGHT_ITEM_BACKGROUND[backgroundColor]]};
     color: ${({ theme }) => theme['gray-100']};
     border-radius: 50%;
+  }
+`
+
+export const CoffeeCardsWrapper = styled.div`
+  max-width: 72rem;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+
+  h3 {
+    display: block;
+    margin-bottom: 3.375rem;
+    color: ${({ theme }) => theme['gray-800']};
+    font-weight: 900;
+    font-size: 2rem;
   }
 `

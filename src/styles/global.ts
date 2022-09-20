@@ -25,4 +25,8 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  h1,h2,h3,h4 {
+    font-family: 'Baloo 2', cursive;
+  }
 `
