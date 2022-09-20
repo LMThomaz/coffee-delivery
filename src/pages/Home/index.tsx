@@ -69,7 +69,7 @@ export function Home() {
         <h3>Nossos cafés</h3>
         <ListCoffees>
           {coffees.map((coffee) => (
-            <CardCoffee key={coffee.id} />
+            <CardCoffee key={coffee.id} data={coffee} />
           ))}
         </ListCoffees>
       </CoffeeCardsWrapper>

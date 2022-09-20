@@ -78,7 +78,7 @@ export const HighlightListItem = styled.li<HighlightItemProps>`
 
 export const CoffeeCardsWrapper = styled.div`
   max-width: 72rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 9rem;
   margin: 0 auto;
 
   h3 {
