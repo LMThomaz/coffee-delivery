@@ -1,5 +1,5 @@
+import { CardCoffee } from '@components'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { useTheme } from 'styled-components'
 import {
   ContainerHome,
   HighlightList,
@@ -10,8 +10,6 @@ import {
 } from './styles'
 
 export function Home() {
-  const theme = useTheme()
-
   return (
     <ContainerHome>
       <IntroWrapper>
@@ -52,6 +50,12 @@ export function Home() {
         </div>
         <IntroImage />
       </IntroWrapper>
+      <div>
+        <strong>Nossos cafés</strong>
+        <div>
+          <CardCoffee />
+        </div>
+      </div>
     </ContainerHome>
   )
 }
