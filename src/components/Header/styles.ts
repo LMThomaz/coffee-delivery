@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ContainerHeader = styled.header`
@@ -15,7 +16,7 @@ export const ContainerHeader = styled.header`
   }
 `
 
-export const BaseButton = styled.button`
+export const InfoLocation = styled.button`
   border: none;
   border-radius: 6px;
   padding: 0.5rem;
@@ -25,15 +26,21 @@ export const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
-`
-
-export const InfoLocation = styled(BaseButton)`
   background-color: ${({ theme }) => theme['purple-200']};
   color: ${({ theme }) => theme['purple-700']};
   cursor: default;
 `
 
-export const CartShopping = styled(BaseButton)`
+export const CartShopping = styled(Link)`
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  line-height: 1.3;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
   background-color: ${({ theme }) => theme['yellow-200']};
   color: ${({ theme }) => theme['yellow-700']};
   box-shadow: 0 0 0 0 ${({ theme }) => theme['yellow-700']};
