@@ -21,7 +21,8 @@
       "@components": ["./src/components"],
       "@pages": ["./src/pages"],
       "@services": ["./src/services"],
-      "@dtos": ["./src/dtos"]
+      "@dtos": ["./src/dtos"],
+      "@utils": ["./src/utils"]
     }
   },
   "include": ["src"],
