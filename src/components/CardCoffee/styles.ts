@@ -54,10 +54,16 @@ export const Footer = styled.footer`
   margin-top: 2rem;
 `
 
-export const AmountWrapper = styled.div`
-  color: ${({ theme }) => theme['gray-700']};
+interface AmountWrapperProps {
+  showInformationUnitValue: boolean
+}
+
+export const AmountWrapper = styled.div<AmountWrapperProps>`
+  color: ${({ theme, showInformationUnitValue }) =>
+    showInformationUnitValue ? theme['gray-600'] : theme['gray-700']};
   font-family: 'Baloo 2', cursive;
   font-size: 1.5rem;
+  transition: color 120ms ease-in-out;
 
   span {
     font-family: 'Roboto', sans-serif;
@@ -74,6 +80,13 @@ export const CountItemsWrapper = styled.div`
   align-items: center;
   height: 2.375rem;
   overflow: hidden;
+
+  span {
+    font-family: 'Baloo 2', cursive;
+    display: block;
+    width: 1rem;
+    text-align: center;
+  }
 `
 
 export const ButtonCountItems = styled.button`

@@ -14,6 +14,7 @@ import macchiatoImg from '@assets/typeCoffee/macchiato.png'
 import mochaccinoImg from '@assets/typeCoffee/mochaccino.png'
 import { CoffeeDTO } from '@dtos'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { useState } from 'react'
 import {
   AmountWrapper,
   ButtonAddToCart,
@@ -32,10 +33,12 @@ interface CardCoffeeProps {
 }
 
 export function CardCoffee({ data }: CardCoffeeProps) {
-  const amountFormatted = String((data.amount / 100).toFixed(2)).replaceAll(
-    '.',
-    ',',
-  )
+  const [quantity, setQuantity] = useState(0)
+  const amountWithQuantity =
+    quantity === 0 ? data.amount : data.amount * quantity
+  const amountFormatted = String(
+    (amountWithQuantity / 100).toFixed(2),
+  ).replaceAll('.', ',')
 
   const images = {
     espresso: espressoImg,
@@ -56,6 +59,22 @@ export function CardCoffee({ data }: CardCoffeeProps) {
 
   const imageToUsed = images[data.image as keyof typeof images]
 
+  function handleAddQuantityCoffee() {
+    setQuantity((oldState) => {
+      if (oldState >= 10) return 10
+      return oldState + 1
+    })
+  }
+
+  function handleDecreaseQuantityCoffee() {
+    setQuantity((oldState) => {
+      if (oldState <= 0) return 0
+      return oldState - 1
+    })
+  }
+
+  const showInformationUnitValue = quantity === 0
+
   return (
     <ContainerCardCoffee>
       <img src={imageToUsed} alt={`Imagem do café ${data.title}`} />
@@ -67,17 +86,17 @@ export function CardCoffee({ data }: CardCoffeeProps) {
       <Title>{data.title}</Title>
       <Description>{data.description}</Description>
       <Footer>
-        <AmountWrapper>
+        <AmountWrapper showInformationUnitValue={showInformationUnitValue}>
           <span>R$ </span>
           {amountFormatted}
         </AmountWrapper>
         <CountItemsWrapper>
-          <ButtonCountItems>
-            <Minus size={14} />
+          <ButtonCountItems onClick={handleDecreaseQuantityCoffee}>
+            <Minus size={14} weight="bold" />
           </ButtonCountItems>
-          <span>1</span>
-          <ButtonCountItems>
-            <Plus size={14} />
+          <span>{quantity}</span>
+          <ButtonCountItems onClick={handleAddQuantityCoffee}>
+            <Plus size={14} weight="bold" />
           </ButtonCountItems>
         </CountItemsWrapper>
         <ButtonAddToCart>
