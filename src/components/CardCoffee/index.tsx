@@ -1,5 +1,5 @@
 import { CoffeeDTO } from '@dtos'
-import { images } from '@utils'
+import { convertCentsToBRL, images } from '@utils'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 import {
@@ -23,9 +23,8 @@ export function CardCoffee({ data }: CardCoffeeProps) {
   const [quantity, setQuantity] = useState(0)
   const amountWithQuantity =
     quantity === 0 ? data.amount : data.amount * quantity
-  const amountFormatted = String(
-    (amountWithQuantity / 100).toFixed(2),
-  ).replaceAll('.', ',')
+
+  const [currency, amountFormatted] = convertCentsToBRL(amountWithQuantity)
 
   const imageToUsed = images[data.image as keyof typeof images]
 
@@ -57,7 +56,7 @@ export function CardCoffee({ data }: CardCoffeeProps) {
       <Description>{data.description}</Description>
       <Footer>
         <AmountWrapper showInformationUnitValue={showInformationUnitValue}>
-          <span>R$ </span>
+          <span>{currency} </span>
           {amountFormatted}
         </AmountWrapper>
         <CountItemsWrapper>
