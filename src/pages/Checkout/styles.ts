@@ -58,4 +58,9 @@ export const FormAddress = styled.form`
 
 export const FormMethodPayment = styled.div`
   margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
 `

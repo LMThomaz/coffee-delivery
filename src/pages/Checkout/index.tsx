@@ -6,7 +6,9 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { useState } from 'react'
 import { useTheme } from 'styled-components'
+import { RadioMethodPayment } from './components'
 import {
   Card,
   CardInfo,
@@ -17,6 +19,8 @@ import {
 } from './styles'
 
 export function Checkout() {
+  const [methodPayment, setMethodPayment] = useState('')
+
   const theme = useTheme()
 
   return (
@@ -61,21 +65,30 @@ export function Checkout() {
             </div>
           </CardInfo>
           <FormMethodPayment>
-            <div>
-              <input type="radio" name="method-payment" value="credit-card" />
-              <CreditCard />
-              <span>Cartão de crédito</span>
-            </div>
-            <div>
-              <input type="radio" name="method-payment" value="debit-card" />
-              <Bank />
-              <span>Cartão de débito</span>
-            </div>
-            <div>
-              <input type="radio" name="method-payment" value="money" />
-              <Money />
-              <span>Dinheiro</span>
-            </div>
+            <RadioMethodPayment
+              icon={<CreditCard size={16} color={theme['purple-500']} />}
+              label="Cartão de crédito"
+              name="method-payment"
+              value="credit-card"
+              currentValue={methodPayment}
+              onChangeValue={setMethodPayment}
+            />
+            <RadioMethodPayment
+              icon={<Bank size={16} color={theme['purple-500']} />}
+              label="Cartão de débito"
+              name="method-payment"
+              value="debit-card"
+              currentValue={methodPayment}
+              onChangeValue={setMethodPayment}
+            />
+            <RadioMethodPayment
+              icon={<Money size={16} color={theme['purple-500']} />}
+              label="Dinheiro"
+              name="method-payment"
+              value="money"
+              currentValue={methodPayment}
+              onChangeValue={setMethodPayment}
+            />
           </FormMethodPayment>
         </Card>
       </div>
