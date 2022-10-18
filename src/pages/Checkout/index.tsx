@@ -1,3 +1,4 @@
+import { Input } from '@components'
 import {
   Bank,
   CreditCard,
@@ -31,16 +32,21 @@ export function Checkout() {
             </div>
           </CardInfo>
           <FormAddress>
-            <input placeholder="CEP" />
-            <input placeholder="Rua" />
+            <Input placeholder="CEP" name="cep" />
+            <Input placeholder="Rua" name="address" />
             <div>
-              <input placeholder="Número" />
-              <input placeholder="Complemento" />
+              <Input placeholder="Número" name="number" />
+              <Input
+                placeholder="Complemento"
+                name="complement"
+                suffix="Opcional"
+                className="fill-column"
+              />
             </div>
             <div>
-              <input placeholder="Bairro" />
-              <input placeholder="Cidade" />
-              <input placeholder="UF" />
+              <Input placeholder="Bairro" name="district" />
+              <Input placeholder="Cidade" name="city" />
+              <Input placeholder="UF" name="uf" />
             </div>
           </FormAddress>
         </Card>

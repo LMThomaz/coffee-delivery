@@ -31,6 +31,7 @@ export const CardInfo = styled.div`
 
   p {
     color: ${({ theme }) => theme['gray-800']};
+    font-size: 1rem;
   }
   span {
     color: ${({ theme }) => theme['gray-700']};
@@ -40,6 +41,19 @@ export const CardInfo = styled.div`
 
 export const FormAddress = styled.form`
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  > div {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 12.5rem auto 3.75rem;
+
+    .fill-column {
+      grid-column: 2 / 4;
+    }
+  }
 `
 
 export const FormMethodPayment = styled.div`
