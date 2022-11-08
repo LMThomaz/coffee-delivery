@@ -94,7 +94,35 @@ export function Checkout() {
       </div>
       <div>
         <TitleCard>Cafés selecionados</TitleCard>
-        <Card></Card>
+        <Card>
+          <div>
+            <div>
+              <img src="" alt="" />
+              <div>
+                <p>Expresso Tradicional</p>
+                <div>
+                  <button></button>
+                  <button>Remover</button>
+                </div>
+                <p>R$ 29,70</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <p>
+                Total de itens <span>R$ 29,70</span>
+              </p>
+              <p>
+                Entrega <span>R$ 3,50</span>
+              </p>
+              <p>
+                Total <span>R$ 33,20</span>
+              </p>
+            </div>
+            <button>Confirmar pedido</button>
+          </div>
+        </Card>
       </div>
     </CheckoutContainer>
   )

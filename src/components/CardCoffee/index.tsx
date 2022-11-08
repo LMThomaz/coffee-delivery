@@ -1,13 +1,12 @@
 import { CoffeeDTO } from '@dtos'
 import { convertCentsToBRL, images } from '@utils'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
+import { Quantity } from '../Quantity'
 import {
   AmountWrapper,
   ButtonAddToCart,
-  ButtonCountItems,
   ContainerCardCoffee,
-  CountItemsWrapper,
   Description,
   Footer,
   Tag,
@@ -28,21 +27,11 @@ export function CardCoffee({ data }: CardCoffeeProps) {
 
   const imageToUsed = images[data.image as keyof typeof images]
 
-  function handleAddQuantityCoffee() {
-    setQuantity((oldState) => {
-      if (oldState >= 10) return 10
-      return oldState + 1
-    })
-  }
-
-  function handleDecreaseQuantityCoffee() {
-    setQuantity((oldState) => {
-      if (oldState <= 0) return 0
-      return oldState - 1
-    })
-  }
-
   const showInformationUnitValue = quantity === 0
+
+  function onChangeQuantity(newQuantity: number) {
+    setQuantity(newQuantity)
+  }
 
   return (
     <ContainerCardCoffee>
@@ -59,15 +48,7 @@ export function CardCoffee({ data }: CardCoffeeProps) {
           <span>{currency} </span>
           {amountFormatted}
         </AmountWrapper>
-        <CountItemsWrapper>
-          <ButtonCountItems onClick={handleDecreaseQuantityCoffee}>
-            <Minus size={14} weight="bold" />
-          </ButtonCountItems>
-          <span>{quantity}</span>
-          <ButtonCountItems onClick={handleAddQuantityCoffee}>
-            <Plus size={14} weight="bold" />
-          </ButtonCountItems>
-        </CountItemsWrapper>
+        <Quantity quantity={quantity} onChangeQuantity={onChangeQuantity} />
         <ButtonAddToCart>
           <ShoppingCart weight="fill" size={22} />
         </ButtonAddToCart>
