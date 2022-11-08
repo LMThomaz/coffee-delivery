@@ -8,6 +8,12 @@ export const CheckoutContainer = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
+
+  .resume-items {
+    > div {
+      border-radius: 6px 44px;
+    }
+  }
 `
 
 export const TitleCard = styled.strong`
@@ -63,4 +69,15 @@ export const FormMethodPayment = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
+`
+export const ListItensResume = styled.div``
+
+export const ItemResume = styled.div`
+  display: flex;
+`
+
+export const ItemResumeInfo = styled.div``
+
+export const ItemResumeInfoActions = styled.div`
+  display: flex;
 `

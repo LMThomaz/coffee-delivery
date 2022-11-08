@@ -1,4 +1,5 @@
-import { Input } from '@components'
+import { Input, Quantity } from '@components'
+import { images } from '@utils'
 import {
   Bank,
   CreditCard,
@@ -15,13 +16,22 @@ import {
   CheckoutContainer,
   FormAddress,
   FormMethodPayment,
+  ItemResume,
+  ItemResumeInfo,
+  ItemResumeInfoActions,
+  ListItensResume,
   TitleCard,
 } from './styles'
 
 export function Checkout() {
   const [methodPayment, setMethodPayment] = useState('')
+  const [quantity, setQuantity] = useState(0)
 
   const theme = useTheme()
+
+  function onChangeQuantity(newQuantity: number) {
+    setQuantity(newQuantity)
+  }
 
   return (
     <CheckoutContainer>
@@ -92,22 +102,25 @@ export function Checkout() {
           </FormMethodPayment>
         </Card>
       </div>
-      <div>
+      <div className="resume-items">
         <TitleCard>Cafés selecionados</TitleCard>
         <Card>
-          <div>
-            <div>
-              <img src="" alt="" />
-              <div>
+          <ListItensResume>
+            <ItemResume>
+              <img src={images.american} alt="" />
+              <ItemResumeInfo>
                 <p>Expresso Tradicional</p>
-                <div>
-                  <button></button>
+                <ItemResumeInfoActions>
+                  <Quantity
+                    quantity={quantity}
+                    onChangeQuantity={onChangeQuantity}
+                  />
                   <button>Remover</button>
-                </div>
-                <p>R$ 29,70</p>
-              </div>
-            </div>
-          </div>
+                </ItemResumeInfoActions>
+              </ItemResumeInfo>
+              <p>R$ 29,70</p>
+            </ItemResume>
+          </ListItensResume>
           <div>
             <div>
               <p>
