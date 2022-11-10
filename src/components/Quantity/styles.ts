@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const ContainerQuantity = styled.div`
-  margin-left: auto;
-  background: ${({ theme }) => theme['gray-500']};
+  background: ${({ theme }) => theme['gray-400']};
   border-radius: 6px;
   display: flex;
   justify-content: center;

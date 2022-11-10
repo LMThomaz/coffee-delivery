@@ -70,14 +70,8 @@ export const FormMethodPayment = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
 `
-export const ListItensResume = styled.div``
-
-export const ItemResume = styled.div`
+export const ListItensResume = styled.div`
   display: flex;
-`
-
-export const ItemResumeInfo = styled.div``
-
-export const ItemResumeInfoActions = styled.div`
-  display: flex;
+  flex-direction: column;
+  width: 100%;
 `

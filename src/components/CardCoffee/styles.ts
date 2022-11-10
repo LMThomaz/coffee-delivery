@@ -64,6 +64,7 @@ export const AmountWrapper = styled.div<AmountWrapperProps>`
   font-family: 'Baloo 2', cursive;
   font-size: 1.5rem;
   transition: color 120ms ease-in-out;
+  margin-right: auto;
 
   span {
     font-family: 'Roboto', sans-serif;

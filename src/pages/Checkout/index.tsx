@@ -1,5 +1,4 @@
-import { Input, Quantity } from '@components'
-import { images } from '@utils'
+import { Input } from '@components'
 import {
   Bank,
   CreditCard,
@@ -9,29 +8,21 @@ import {
 } from 'phosphor-react'
 import { useState } from 'react'
 import { useTheme } from 'styled-components'
-import { RadioMethodPayment } from './components'
+import { ItemResume, RadioMethodPayment } from './components'
 import {
   Card,
   CardInfo,
   CheckoutContainer,
   FormAddress,
   FormMethodPayment,
-  ItemResume,
-  ItemResumeInfo,
-  ItemResumeInfoActions,
   ListItensResume,
   TitleCard,
 } from './styles'
 
 export function Checkout() {
   const [methodPayment, setMethodPayment] = useState('')
-  const [quantity, setQuantity] = useState(0)
 
   const theme = useTheme()
-
-  function onChangeQuantity(newQuantity: number) {
-    setQuantity(newQuantity)
-  }
 
   return (
     <CheckoutContainer>
@@ -106,20 +97,7 @@ export function Checkout() {
         <TitleCard>Cafés selecionados</TitleCard>
         <Card>
           <ListItensResume>
-            <ItemResume>
-              <img src={images.american} alt="" />
-              <ItemResumeInfo>
-                <p>Expresso Tradicional</p>
-                <ItemResumeInfoActions>
-                  <Quantity
-                    quantity={quantity}
-                    onChangeQuantity={onChangeQuantity}
-                  />
-                  <button>Remover</button>
-                </ItemResumeInfoActions>
-              </ItemResumeInfo>
-              <p>R$ 29,70</p>
-            </ItemResume>
+            <ItemResume />
           </ListItensResume>
           <div>
             <div>
