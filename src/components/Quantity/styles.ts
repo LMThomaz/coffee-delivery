@@ -14,6 +14,8 @@ export const ContainerQuantity = styled.div`
     display: block;
     width: 1rem;
     text-align: center;
+    cursor: default;
+    user-select: none;
   }
 `
 
@@ -23,4 +25,9 @@ export const ButtonCountItems = styled.button`
   padding: 0.5rem;
   line-height: 0;
   color: ${({ theme }) => theme['purple-500']};
+  transition: all 120ms ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme['purple-700']};
+  }
 `

@@ -126,5 +126,10 @@ export const InfoResumo = styled.div`
     text-transform: uppercase;
     font-size: 0.875rem;
     font-weight: bold;
+    transition: all 120ms ease-in-out;
+
+    &:hover {
+      background-color: ${({ theme }) => theme['yellow-700']};
+    }
   }
 `

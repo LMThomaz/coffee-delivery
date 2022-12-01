@@ -45,6 +45,10 @@ export const RemoveButton = styled.button`
   align-items: center;
   gap: 0.25rem;
   padding: 0 0.5rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme['gray-500']};
+  }
 `
 
 export const Amount = styled.p`

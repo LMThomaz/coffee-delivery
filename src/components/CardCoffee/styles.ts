@@ -83,4 +83,9 @@ export const ButtonAddToCart = styled.button`
   justify-content: center;
   align-items: center;
   margin-left: 0.5rem;
+  transition: all 120ms ease-in-out;
+
+  &:hover {
+    background: ${({ theme }) => theme['purple-500']};
+  }
 `
