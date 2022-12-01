@@ -15,6 +15,7 @@ import {
   CheckoutContainer,
   FormAddress,
   FormMethodPayment,
+  InfoResumo,
   ListItensResume,
   TitleCard,
 } from './styles'
@@ -37,7 +38,7 @@ export function Checkout() {
             </div>
           </CardInfo>
           <FormAddress>
-            <Input placeholder="CEP" name="cep" />
+            <Input placeholder="CEP" name="cep" className="cep" />
             <Input placeholder="Rua" name="address" />
             <div>
               <Input placeholder="Número" name="number" />
@@ -98,8 +99,9 @@ export function Checkout() {
         <Card>
           <ListItensResume>
             <ItemResume />
+            <ItemResume />
           </ListItensResume>
-          <div>
+          <InfoResumo>
             <div>
               <p>
                 Total de itens <span>R$ 29,70</span>
@@ -108,11 +110,13 @@ export function Checkout() {
                 Entrega <span>R$ 3,50</span>
               </p>
               <p>
-                Total <span>R$ 33,20</span>
+                <strong>
+                  Total <span>R$ 33,20</span>
+                </strong>
               </p>
             </div>
             <button>Confirmar pedido</button>
-          </div>
+          </InfoResumo>
         </Card>
       </div>
     </CheckoutContainer>
