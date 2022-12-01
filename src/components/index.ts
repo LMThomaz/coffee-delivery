@@ -1,3 +1,4 @@
+export * from './Badge'
 export * from './CardCoffee'
 export * from './Header'
 export * from './Input'

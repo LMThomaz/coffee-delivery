@@ -46,6 +46,7 @@ export const CartShopping = styled(Link)`
   box-shadow: 0 0 0 0 ${({ theme }) => theme['yellow-700']};
   cursor: pointer;
   transition: all 80ms ease-in-out;
+  position: relative;
 
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme['yellow-700']};
