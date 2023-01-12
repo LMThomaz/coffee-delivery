@@ -2,6 +2,7 @@ import { CoffeeDTO } from '@dtos'
 import { convertCentsToBRL, images } from '@utils'
 import { ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
+import { useCart } from '../../contexts/CartContext'
 import { Quantity } from '../Quantity'
 import {
   AmountWrapper,
@@ -20,17 +21,17 @@ interface CardCoffeeProps {
 
 export function CardCoffee({ data }: CardCoffeeProps) {
   const [quantity, setQuantity] = useState(0)
+
+  const { addNewItemCart } = useCart()
+
   const amountWithQuantity =
     quantity === 0 ? data.amount : data.amount * quantity
-
   const [currency, amountFormatted] = convertCentsToBRL(amountWithQuantity)
-
   const imageToUsed = images[data.image as keyof typeof images]
-
   const showInformationUnitValue = quantity === 0
 
   function onChangeQuantity(newQuantity: number) {
-    setQuantity(newQuantity)
+    if (newQuantity >= 0) setQuantity(newQuantity)
   }
 
   return (
@@ -49,7 +50,15 @@ export function CardCoffee({ data }: CardCoffeeProps) {
           {amountFormatted}
         </AmountWrapper>
         <Quantity quantity={quantity} onChangeQuantity={onChangeQuantity} />
-        <ButtonAddToCart>
+        <ButtonAddToCart
+          disabled={quantity === 0}
+          onClick={() =>
+            addNewItemCart({
+              id: data.id,
+              quantity,
+            })
+          }
+        >
           <ShoppingCart weight="fill" size={22} />
         </ButtonAddToCart>
       </Footer>

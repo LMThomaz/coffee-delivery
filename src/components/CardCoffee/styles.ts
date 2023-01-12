@@ -85,7 +85,12 @@ export const ButtonAddToCart = styled.button`
   margin-left: 0.5rem;
   transition: all 120ms ease-in-out;
 
-  &:hover {
+  &:not(:disabled):hover {
     background: ${({ theme }) => theme['purple-500']};
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: default;
   }
 `
