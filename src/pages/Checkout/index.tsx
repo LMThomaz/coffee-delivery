@@ -7,6 +7,7 @@ import {
   Money,
 } from 'phosphor-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import { ItemResume, RadioMethodPayment } from './components'
 import {
@@ -24,6 +25,11 @@ export function Checkout() {
   const [methodPayment, setMethodPayment] = useState('')
 
   const theme = useTheme()
+  const navigate = useNavigate()
+
+  function handleSubmit() {
+    navigate('/success')
+  }
 
   return (
     <CheckoutContainer>
@@ -115,7 +121,7 @@ export function Checkout() {
                 </strong>
               </p>
             </div>
-            <button>Confirmar pedido</button>
+            <button onClick={() => handleSubmit()}>Confirmar pedido</button>
           </InfoResumo>
         </Card>
       </div>
