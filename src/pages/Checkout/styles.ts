@@ -67,6 +67,10 @@ export const FormAddress = styled.form`
     .fill-column {
       grid-column: 2 / 4;
     }
+
+    &.fill-row {
+      grid-template-columns: auto;
+    }
   }
 `
 

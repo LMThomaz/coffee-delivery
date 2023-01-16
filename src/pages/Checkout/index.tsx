@@ -1,4 +1,6 @@
 import { Input } from '@components'
+import { CoffeeDTO } from '@dtos'
+import { api } from '@services'
 import {
   Bank,
   CreditCard,
@@ -6,9 +8,10 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
+import { useCart } from '../../contexts/CartContext'
 import { ItemResume, RadioMethodPayment } from './components'
 import {
   Card,
@@ -21,15 +24,46 @@ import {
   TitleCard,
 } from './styles'
 
+export interface CoffeeCartResume {
+  coffee: CoffeeDTO
+  quantity: number
+}
+
 export function Checkout() {
   const [methodPayment, setMethodPayment] = useState('')
+  const [coffeesResume, setCoffeesResume] = useState<CoffeeCartResume[]>([])
 
   const theme = useTheme()
   const navigate = useNavigate()
+  const { itemsCart } = useCart()
 
   function handleSubmit() {
     navigate('/success')
   }
+
+  useEffect(() => {
+    async function getCoffees() {
+      const response = await api.get<CoffeeDTO[]>('/coffees')
+
+      const coffeeFormattedToResume: CoffeeCartResume[] = itemsCart
+        .filter((item) =>
+          response.data.find((itemApi) => itemApi.id === item.id),
+        )
+        .map((item) => {
+          const itemInApi = response.data.find(
+            (itemApi) => itemApi.id === item.id,
+          )
+
+          return {
+            coffee: itemInApi as CoffeeDTO,
+            quantity: item.quantity,
+          }
+        })
+
+      setCoffeesResume([...coffeeFormattedToResume])
+    }
+    getCoffees()
+  }, [itemsCart])
 
   return (
     <CheckoutContainer>
@@ -45,7 +79,7 @@ export function Checkout() {
           </CardInfo>
           <FormAddress>
             <Input placeholder="CEP" name="cep" className="cep" />
-            <Input placeholder="Rua" name="address" />
+            <Input placeholder="Rua" name="address" className="fill-row" />
             <div>
               <Input placeholder="Número" name="number" />
               <Input
@@ -104,8 +138,13 @@ export function Checkout() {
         <TitleCard>Cafés selecionados</TitleCard>
         <Card>
           <ListItensResume>
-            <ItemResume />
-            <ItemResume />
+            {coffeesResume.map((item) => (
+              <ItemResume
+                key={item.coffee.id}
+                coffee={item.coffee}
+                quantity={item.quantity}
+              />
+            ))}
           </ListItensResume>
           <InfoResumo>
             <div>

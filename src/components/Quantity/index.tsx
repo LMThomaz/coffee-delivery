@@ -4,26 +4,39 @@ import { ButtonCountItems, ContainerQuantity } from './styles'
 interface Props {
   quantity: number
   onChangeQuantity: (newQuantity: number) => void
+  min?: number
+  max?: number
 }
 
-export function Quantity({ quantity, onChangeQuantity }: Props) {
+export function Quantity({
+  quantity,
+  onChangeQuantity,
+  min = 0,
+  max = 10,
+}: Props) {
   function handleAddQuantityCoffee() {
-    if (quantity >= 10) onChangeQuantity(10)
+    if (quantity >= max) return onChangeQuantity(max)
     onChangeQuantity(quantity + 1)
   }
 
   function handleDecreaseQuantityCoffee() {
-    if (quantity <= 0) onChangeQuantity(0)
+    if (quantity <= min) return onChangeQuantity(min)
     onChangeQuantity(quantity - 1)
   }
 
   return (
     <ContainerQuantity>
-      <ButtonCountItems onClick={handleDecreaseQuantityCoffee}>
+      <ButtonCountItems
+        onClick={handleDecreaseQuantityCoffee}
+        disabled={quantity <= min}
+      >
         <Minus size={14} weight="bold" />
       </ButtonCountItems>
       <span>{quantity}</span>
-      <ButtonCountItems onClick={handleAddQuantityCoffee}>
+      <ButtonCountItems
+        onClick={handleAddQuantityCoffee}
+        disabled={quantity >= max}
+      >
         <Plus size={14} weight="bold" />
       </ButtonCountItems>
     </ContainerQuantity>

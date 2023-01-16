@@ -30,4 +30,9 @@ export const ButtonCountItems = styled.button`
   &:hover {
     color: ${({ theme }) => theme['purple-700']};
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `
