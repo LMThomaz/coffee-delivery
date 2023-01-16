@@ -23,7 +23,6 @@ export function itemsCartReducer(state: ItemsCartState, action: any) {
 
         if (hasItemInSate) {
           const alreadyExistItem = draft.itemsCart[indexItemInState]
-          console.log(alreadyExistItem)
 
           draft.itemsCart[indexItemInState] = {
             id: alreadyExistItem.id,
