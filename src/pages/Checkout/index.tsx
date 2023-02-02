@@ -1,5 +1,6 @@
 import { Input } from '@components'
 import { CoffeeDTO } from '@dtos'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { api } from '@services'
 import {
   Bank,
@@ -9,8 +10,10 @@ import {
   Money,
 } from 'phosphor-react'
 import { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
+import * as zod from 'zod'
 import { useCart } from '../../contexts/CartContext'
 import { ItemResume, RadioMethodPayment } from './components'
 import {
@@ -29,16 +32,53 @@ export interface CoffeeCartResume {
   quantity: number
 }
 
+const newDeliveryAddressFormValidationSchema = zod.object({
+  cep: zod
+    .string()
+    .min(8, 'Informe seu CEP corretamente')
+    .max(9, 'Informe seu CEP corretamente'),
+  address: zod.string().min(3, 'Informe sua Rua corretamente'),
+  number: zod.number().min(1, 'Informe o Número do endereço corretamente'),
+  complement: zod.optional(
+    zod.string().min(3, 'O complemento deve ter ao menos 3 caracteres'),
+  ),
+  district: zod.string().min(3, 'O Bairro deve ter pelo menos 3 caracteres'),
+  city: zod.string().min(3, 'A Cidade deve ter pelo menos 3 caracteres'),
+  uf: zod.string().length(2, 'O UF deve ter exatamente 2 caracteres'),
+})
+
+type NewDeliveryAddressFormData = zod.infer<
+  typeof newDeliveryAddressFormValidationSchema
+>
+
 export function Checkout() {
-  const [methodPayment, setMethodPayment] = useState('')
+  const [methodPayment, setMethodPayment] = useState('credit-card')
   const [coffeesResume, setCoffeesResume] = useState<CoffeeCartResume[]>([])
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<NewDeliveryAddressFormData>({
+    resolver: zodResolver(newDeliveryAddressFormValidationSchema),
+    defaultValues: {
+      address: '',
+      cep: '',
+      city: '',
+      complement: '',
+      district: '',
+      number: 0,
+      uf: '',
+    },
+  })
 
   const theme = useTheme()
   const navigate = useNavigate()
   const { itemsCart } = useCart()
 
-  function handleSubmit() {
-    navigate('/success')
+  function handleCheckout(data: NewDeliveryAddressFormData) {
+    console.log(data)
+    // navigate('/success')
   }
 
   useEffect(() => {
@@ -65,8 +105,14 @@ export function Checkout() {
     getCoffees()
   }, [itemsCart])
 
+  useEffect(() => {
+    Object.entries(errors).forEach(([key, value]) => {
+      console.log(key, '=>', value)
+    })
+  }, [errors])
+
   return (
-    <CheckoutContainer>
+    <CheckoutContainer onSubmit={handleSubmit(handleCheckout)}>
       <div>
         <TitleCard>Complete seu pedido</TitleCard>
         <Card>
@@ -78,21 +124,25 @@ export function Checkout() {
             </div>
           </CardInfo>
           <FormAddress>
-            <Input placeholder="CEP" name="cep" className="cep" />
-            <Input placeholder="Rua" name="address" className="fill-row" />
+            <Input placeholder="CEP" className="cep" {...register('cep')} />
+            <Input
+              placeholder="Rua"
+              className="fill-row"
+              {...register('address')}
+            />
             <div>
-              <Input placeholder="Número" name="number" />
+              <Input placeholder="Número" {...register('number')} />
               <Input
                 placeholder="Complemento"
-                name="complement"
                 suffix="Opcional"
                 className="fill-column"
+                {...register('complement')}
               />
             </div>
             <div>
-              <Input placeholder="Bairro" name="district" />
-              <Input placeholder="Cidade" name="city" />
-              <Input placeholder="UF" name="uf" />
+              <Input placeholder="Bairro" {...register('district')} />
+              <Input placeholder="Cidade" {...register('city')} />
+              <Input placeholder="UF" {...register('uf')} />
             </div>
           </FormAddress>
         </Card>
@@ -160,7 +210,7 @@ export function Checkout() {
                 </strong>
               </p>
             </div>
-            <button onClick={() => handleSubmit()}>Confirmar pedido</button>
+            <button type="submit">Confirmar pedido</button>
           </InfoResumo>
         </Card>
       </div>

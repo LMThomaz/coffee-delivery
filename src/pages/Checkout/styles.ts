@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainer = styled.form`
   width: 100%;
   max-width: 72rem;
   margin: 0 auto;
@@ -49,7 +49,7 @@ export const CardInfo = styled.div`
   }
 `
 
-export const FormAddress = styled.form`
+export const FormAddress = styled.div`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
