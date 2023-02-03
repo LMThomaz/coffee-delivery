@@ -1,4 +1,3 @@
-import { Input } from '@components'
 import { CoffeeDTO } from '@dtos'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { api } from '@services'
@@ -10,17 +9,16 @@ import {
   Money,
 } from 'phosphor-react'
 import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import * as zod from 'zod'
 import { useCart } from '../../contexts/CartContext'
-import { ItemResume, RadioMethodPayment } from './components'
+import { FormAddress, ItemResume, RadioMethodPayment } from './components'
 import {
   Card,
   CardInfo,
   CheckoutContainer,
-  FormAddress,
   FormMethodPayment,
   InfoResumo,
   ListItensResume,
@@ -38,7 +36,7 @@ const newDeliveryAddressFormValidationSchema = zod.object({
     .min(8, 'Informe seu CEP corretamente')
     .max(9, 'Informe seu CEP corretamente'),
   address: zod.string().min(3, 'Informe sua Rua corretamente'),
-  number: zod.number().min(1, 'Informe o Número do endereço corretamente'),
+  number: zod.string().min(1, 'Informe o Número corretamente'),
   complement: zod.optional(
     zod.string().min(3, 'O complemento deve ter ao menos 3 caracteres'),
   ),
@@ -55,11 +53,7 @@ export function Checkout() {
   const [methodPayment, setMethodPayment] = useState('credit-card')
   const [coffeesResume, setCoffeesResume] = useState<CoffeeCartResume[]>([])
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<NewDeliveryAddressFormData>({
+  const newDeliveryAddressForm = useForm<NewDeliveryAddressFormData>({
     resolver: zodResolver(newDeliveryAddressFormValidationSchema),
     defaultValues: {
       address: '',
@@ -67,7 +61,7 @@ export function Checkout() {
       city: '',
       complement: '',
       district: '',
-      number: 0,
+      number: '',
       uf: '',
     },
   })
@@ -75,6 +69,11 @@ export function Checkout() {
   const theme = useTheme()
   const navigate = useNavigate()
   const { itemsCart } = useCart()
+
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = newDeliveryAddressForm
 
   function handleCheckout(data: NewDeliveryAddressFormData) {
     console.log(data)
@@ -106,8 +105,8 @@ export function Checkout() {
   }, [itemsCart])
 
   useEffect(() => {
-    Object.entries(errors).forEach(([key, value]) => {
-      console.log(key, '=>', value)
+    Object.entries(errors).forEach(([key, { message }]) => {
+      window.alert(message)
     })
   }, [errors])
 
@@ -123,28 +122,9 @@ export function Checkout() {
               <span>Informe o endereço onde deseja receber seu pedido</span>
             </div>
           </CardInfo>
-          <FormAddress>
-            <Input placeholder="CEP" className="cep" {...register('cep')} />
-            <Input
-              placeholder="Rua"
-              className="fill-row"
-              {...register('address')}
-            />
-            <div>
-              <Input placeholder="Número" {...register('number')} />
-              <Input
-                placeholder="Complemento"
-                suffix="Opcional"
-                className="fill-column"
-                {...register('complement')}
-              />
-            </div>
-            <div>
-              <Input placeholder="Bairro" {...register('district')} />
-              <Input placeholder="Cidade" {...register('city')} />
-              <Input placeholder="UF" {...register('uf')} />
-            </div>
-          </FormAddress>
+          <FormProvider {...newDeliveryAddressForm}>
+            <FormAddress />
+          </FormProvider>
         </Card>
         <Card>
           <CardInfo>
