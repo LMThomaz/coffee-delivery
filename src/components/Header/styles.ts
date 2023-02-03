@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ContainerHeader = styled.header`
@@ -31,7 +30,7 @@ export const InfoLocation = styled.button`
   cursor: default;
 `
 
-export const CartShopping = styled(Link)`
+export const CartShopping = styled.button`
   border: none;
   border-radius: 6px;
   padding: 0.5rem;
@@ -50,5 +49,12 @@ export const CartShopping = styled(Link)`
 
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme['yellow-700']};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    box-shadow: 0 0 0 0 ${({ theme }) => theme['gray-500']};
+    background-color: ${({ theme }) => theme['gray-400']};
+    color: ${({ theme }) => theme['gray-600']};
   }
 `
