@@ -1,7 +1,8 @@
 import { CoffeeDTO, RequestDTO } from '@dtos'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { MethodPaymentKey } from '@keys'
 import { api } from '@services'
-import { convertCentsToBRL } from '@utils'
+import { convertCentsToBRL, ConvertToCurrency } from '@utils'
 import {
   Bank,
   CreditCard,
@@ -16,7 +17,6 @@ import { toast } from 'react-toastify'
 import { useTheme } from 'styled-components'
 import * as zod from 'zod'
 import { useCart } from '../../contexts/CartContext'
-import { ConvertToCurrency } from '../../utils/convertToCurrency'
 import { FormAddress, ItemResume, RadioMethodPayment } from './components'
 import {
   Card,
@@ -33,19 +33,19 @@ const METHODS_PAYMENT_RADIO = [
     Icon: CreditCard,
     label: 'Cartão de crédito',
     name: 'method-payment',
-    value: 'credit-card',
+    value: MethodPaymentKey.CREDIT_CARD,
   },
   {
     Icon: Bank,
     label: 'Cartão de débito',
     name: 'method-payment',
-    value: 'debit-card',
+    value: MethodPaymentKey.DEBIT_CARD,
   },
   {
     Icon: Money,
     label: 'Dinheiro',
     name: 'method-payment',
-    value: 'money',
+    value: MethodPaymentKey.MONEY,
   },
 ]
 

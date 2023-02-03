@@ -162,6 +162,17 @@
       "uf": "SP",
       "method_payment": "debit-card",
       "id": 1
+    },
+    {
+      "cep": "14725-000",
+      "address": "Av. João Bernardo da Fonseca",
+      "number": "868",
+      "complement": "868",
+      "district": "Centro",
+      "city": "Taiaçu",
+      "uf": "SP",
+      "method_payment": "debit-card",
+      "id": 2
     }
   ]
 }

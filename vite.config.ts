@@ -11,6 +11,7 @@ export default defineConfig({
       { find: '@services', replacement: '/src/services' },
       { find: '@dtos', replacement: '/src/dtos' },
       { find: '@utils', replacement: '/src/utils' },
+      { find: '@keys', replacement: '/src/keys' },
     ],
   },
 })
