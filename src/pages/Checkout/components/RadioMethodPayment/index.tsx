@@ -31,6 +31,7 @@ export function RadioMethodPayment({
       className={classnames({
         checked: radioRef.current?.checked,
       })}
+      type="button"
     >
       <input
         type="radio"

@@ -110,5 +110,11 @@ export const InfoResumo = styled.div`
     &:hover {
       background-color: ${({ theme }) => theme['yellow-700']};
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: ${({ theme }) => theme['gray-500']};
+      color: ${({ theme }) => theme['gray-600']};
+    }
   }
 `

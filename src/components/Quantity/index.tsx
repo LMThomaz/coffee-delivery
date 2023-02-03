@@ -29,6 +29,7 @@ export function Quantity({
       <ButtonCountItems
         onClick={handleDecreaseQuantityCoffee}
         disabled={quantity <= min}
+        type="button"
       >
         <Minus size={14} weight="bold" />
       </ButtonCountItems>
@@ -36,6 +37,7 @@ export function Quantity({
       <ButtonCountItems
         onClick={handleAddQuantityCoffee}
         disabled={quantity >= max}
+        type="button"
       >
         <Plus size={14} weight="bold" />
       </ButtonCountItems>

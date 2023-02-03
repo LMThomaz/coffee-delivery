@@ -1,6 +1,7 @@
 import { CoffeeDTO } from '@dtos'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { api } from '@services'
+import { convertCentsToBRL } from '@utils'
 import {
   Bank,
   CreditCard,
@@ -15,6 +16,7 @@ import { toast } from 'react-toastify'
 import { useTheme } from 'styled-components'
 import * as zod from 'zod'
 import { useCart } from '../../contexts/CartContext'
+import { ConvertToCurrency } from '../../utils/convertToCurrency'
 import { FormAddress, ItemResume, RadioMethodPayment } from './components'
 import {
   Card,
@@ -69,7 +71,21 @@ export function Checkout() {
 
   const theme = useTheme()
   const navigate = useNavigate()
-  const { itemsCart } = useCart()
+  const { itemsCart, quantityItemsInCart } = useCart()
+
+  const hasItemInCart = quantityItemsInCart !== 0
+  const [_, valueTotalItemsByCart] = convertCentsToBRL(
+    coffeesResume.reduce(
+      (acc, cur) => acc + cur.quantity * cur.coffee.amount,
+      0,
+    ),
+  )
+  const valueTotalItemsByCartConverted = Number(
+    valueTotalItemsByCart.replaceAll(',', '.'),
+  )
+  const calculatedDeliveryPrice = hasItemInCart
+    ? 3.5 + 0.2 * quantityItemsInCart
+    : quantityItemsInCart
 
   const {
     handleSubmit,
@@ -77,11 +93,15 @@ export function Checkout() {
   } = newDeliveryAddressForm
 
   function handleCheckout(data: NewDeliveryAddressFormData) {
-    console.log(data)
     // navigate('/success')
   }
 
   useEffect(() => {
+    if (!hasItemInCart) {
+      setCoffeesResume([])
+      return
+    }
+
     async function getCoffees() {
       const response = await api.get<CoffeeDTO[]>('/coffees')
 
@@ -178,18 +198,29 @@ export function Checkout() {
           <InfoResumo>
             <div>
               <p>
-                Total de itens <span>R$ 29,70</span>
+                Total de itens
+                <span>
+                  {ConvertToCurrency.BRL(valueTotalItemsByCartConverted)}
+                </span>
               </p>
               <p>
-                Entrega <span>R$ 3,50</span>
+                Entrega
+                <span>{ConvertToCurrency.BRL(calculatedDeliveryPrice)}</span>
               </p>
               <p>
                 <strong>
-                  Total <span>R$ 33,20</span>
+                  Total
+                  <span>
+                    {ConvertToCurrency.BRL(
+                      valueTotalItemsByCartConverted + 3.5,
+                    )}
+                  </span>
                 </strong>
               </p>
             </div>
-            <button type="submit">Confirmar pedido</button>
+            <button type="submit" disabled={!hasItemInCart}>
+              Confirmar pedido
+            </button>
           </InfoResumo>
         </Card>
       </div>

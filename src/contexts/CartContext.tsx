@@ -41,7 +41,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   })
 
   useEffect(() => {
-    console.log(itemsState)
     const stateJSON = JSON.stringify(itemsState)
     localStorage.setItem(tokenStorageItemsCard, stateJSON)
   }, [itemsState])

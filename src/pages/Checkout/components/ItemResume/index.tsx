@@ -45,7 +45,10 @@ export function ItemResume({ coffee, quantity }: CoffeeCartResume) {
               quantity={quantityInResume}
               onChangeQuantity={onChangeQuantity}
             />
-            <RemoveButton onClick={() => removeItemToCart(coffee.id)}>
+            <RemoveButton
+              onClick={() => removeItemToCart(coffee.id)}
+              type="button"
+            >
               <Trash size={16} color={theme['purple-500']} /> Remover
             </RemoveButton>
           </ItemResumeInfoActions>
