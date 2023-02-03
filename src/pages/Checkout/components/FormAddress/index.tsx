@@ -21,7 +21,12 @@ export function FormAddress() {
         name="address"
       />
       <div>
-        <Input placeholder="Número" register={register} name="number" />
+        <Input
+          placeholder="Número"
+          type="number"
+          register={register}
+          name="number"
+        />
         <Input
           placeholder="Complemento"
           suffix="Opcional"

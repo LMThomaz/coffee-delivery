@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { useTheme } from 'styled-components'
 import * as zod from 'zod'
 import { useCart } from '../../contexts/CartContext'
@@ -105,9 +106,7 @@ export function Checkout() {
   }, [itemsCart])
 
   useEffect(() => {
-    Object.entries(errors).forEach(([key, { message }]) => {
-      window.alert(message)
-    })
+    Object.entries(errors).forEach(([_, { message }]) => toast.warn(message))
   }, [errors])
 
   return (
