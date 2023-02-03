@@ -1,2 +1,2 @@
 export * from './CoffeeDTO'
-export * from './TagDTO'
+export * from './RequestDTO'

@@ -6,7 +6,9 @@
       "description": "O tradicional café feito com água quente e grãos moídos",
       "amount": 990,
       "image": "espresso",
-      "tags": ["Tradicional"]
+      "tags": [
+        "Tradicional"
+      ]
     },
     {
       "id": 2,
@@ -14,7 +16,9 @@
       "description": "Expresso diluído, menos intenso que o tradicional",
       "amount": 990,
       "image": "american",
-      "tags": ["Tradicional"]
+      "tags": [
+        "Tradicional"
+      ]
     },
     {
       "id": 3,
@@ -22,7 +26,9 @@
       "description": "Café expresso tradicional com espuma cremosa",
       "amount": 990,
       "image": "creamyEspresso",
-      "tags": ["Tradicional"]
+      "tags": [
+        "Tradicional"
+      ]
     },
     {
       "id": 4,
@@ -30,7 +36,10 @@
       "description": "Bebida preparada com café expresso e cubos de gelo",
       "amount": 990,
       "image": "icedCoffee",
-      "tags": ["Tradicional", "Gelado"]
+      "tags": [
+        "Tradicional",
+        "Gelado"
+      ]
     },
     {
       "id": 5,
@@ -38,7 +47,10 @@
       "description": "Meio a meio de expresso tradicional com leite vaporizado",
       "amount": 990,
       "image": "coffeeWithMilk",
-      "tags": ["Tradicional", "Com leite"]
+      "tags": [
+        "Tradicional",
+        "Com leite"
+      ]
     },
     {
       "id": 6,
@@ -46,7 +58,10 @@
       "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
       "amount": 990,
       "image": "latte",
-      "tags": ["Tradicional", "Com leite"]
+      "tags": [
+        "Tradicional",
+        "Com leite"
+      ]
     },
     {
       "id": 7,
@@ -54,7 +69,10 @@
       "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
       "amount": 990,
       "image": "cappuccino",
-      "tags": ["Tradicional", "Com leite"]
+      "tags": [
+        "Tradicional",
+        "Com leite"
+      ]
     },
     {
       "id": 8,
@@ -62,7 +80,10 @@
       "description": "Café expresso misturado com um pouco de leite quente e espuma",
       "amount": 990,
       "image": "macchiato",
-      "tags": ["Tradicional", "Com leite"]
+      "tags": [
+        "Tradicional",
+        "Com leite"
+      ]
     },
     {
       "id": 9,
@@ -70,7 +91,10 @@
       "description": "Café expresso com calda de chocolate, pouco leite e espuma",
       "amount": 990,
       "image": "mochaccino",
-      "tags": ["Tradicional", "Com leite"]
+      "tags": [
+        "Tradicional",
+        "Com leite"
+      ]
     },
     {
       "id": 10,
@@ -78,7 +102,10 @@
       "description": "Bebida feita com chocolate dissolvido no leite quente e café",
       "amount": 990,
       "image": "hotChocolate",
-      "tags": ["Especial", "Com leite"]
+      "tags": [
+        "Especial",
+        "Com leite"
+      ]
     },
     {
       "id": 11,
@@ -86,7 +113,11 @@
       "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
       "amount": 990,
       "image": "cuban",
-      "tags": ["Especial", "Alcoólico", "Gelado"]
+      "tags": [
+        "Especial",
+        "Alcoólico",
+        "Gelado"
+      ]
     },
     {
       "id": 12,
@@ -94,7 +125,9 @@
       "description": "Bebida adocicada preparada com café e leite de coco",
       "amount": 990,
       "image": "hawaiian",
-      "tags": ["Especial"]
+      "tags": [
+        "Especial"
+      ]
     },
     {
       "id": 13,
@@ -102,7 +135,9 @@
       "description": "Bebida preparada com grãos de café árabe e especiarias",
       "amount": 990,
       "image": "arabic",
-      "tags": ["Especial"]
+      "tags": [
+        "Especial"
+      ]
     },
     {
       "id": 14,
@@ -110,7 +145,23 @@
       "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       "amount": 990,
       "image": "irish",
-      "tags": ["Especial", "Alcoólico"]
+      "tags": [
+        "Especial",
+        "Alcoólico"
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "cep": "14725-000",
+      "address": "Av. João Bernardo da Fonseca",
+      "number": "868",
+      "complement": "868",
+      "district": "Centro",
+      "city": "Taiaçu",
+      "uf": "SP",
+      "method_payment": "debit-card",
+      "id": 1
     }
   ]
 }

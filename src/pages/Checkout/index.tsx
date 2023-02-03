@@ -1,4 +1,4 @@
-import { CoffeeDTO } from '@dtos'
+import { CoffeeDTO, RequestDTO } from '@dtos'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { api } from '@services'
 import { convertCentsToBRL } from '@utils'
@@ -113,8 +113,23 @@ export function Checkout() {
     formState: { errors },
   } = newDeliveryAddressForm
 
-  function handleCheckout(data: NewDeliveryAddressFormData) {
-    // navigate('/success')
+  async function handleCheckout(data: NewDeliveryAddressFormData) {
+    const payload = { ...data, method_payment: methodPayment }
+
+    const response = await api.post<RequestDTO>('/requests', payload)
+
+    if (response.status !== 201) {
+      toast.error(
+        'Houve algum erro ao cadastrar seu pedido. Tente novamente mais tarde',
+      )
+      return
+    }
+
+    const requestId = response.data.id
+
+    navigate('/success', {
+      state: { requestId },
+    })
   }
 
   useEffect(() => {
@@ -220,7 +235,7 @@ export function Checkout() {
                   Total
                   <span>
                     {ConvertToCurrency.BRL(
-                      valueTotalItemsByCartConverted + 3.5,
+                      valueTotalItemsByCartConverted + calculatedDeliveryPrice,
                     )}
                   </span>
                 </strong>
