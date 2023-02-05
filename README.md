@@ -23,7 +23,6 @@
 ## :mag: Sobre o projeto
 
 Peça logo seu café sem perder tempo e sem dor de cabeça, como desafio da [Rocketseat :rocket:][url-rocketseat] na versão **Ignite ReactJS** :coffee:  
-O NLW detêm muito conteúdo prático, desafios e hacks onde o conteúdo fica disponível durante uma semana.
 A criação do projeto veio como um desafio para a utilização de algumas bibliotecas e _hooks_, tais como: _useReducer_, _react-hook-form_, _useContext_, _zod_.
 
 ## :art: O protótipo?
